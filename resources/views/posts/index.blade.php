@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/posts/index.css') }}">
         
         <title>投稿一覧</title>
 
@@ -12,20 +12,22 @@
     <body class="posts">
         <h1>にて日記</h1>
         @foreach($posts as $post)
-        <div class='post'>
-            <div class='poster'>
-                <p>{{ $post->user->name }}</p>
+        <a href="posts/{{ $post->id }}">
+            <div class='post'>
+                <div class='poster'>
+                    <p>{{ $post->user->name }}</p>
+                </div>
+                <div class='daytime'>
+                    <p>{{ $post->updated_at }}</p>
+                </div>
+                <div class='title'>
+                    <h4>「{{ $post->title }}」</h4>        
+                </div>
+                <div class='body'>
+                    <h5>{{ $post->body }}</h5>    
+                </div>
             </div>
-            <div class='daytime'>
-                <p>{{ $post->updated_at }}</p>
-            </div>
-            <div class='title'>
-                <h4>「{{ $post->title }}」</h4>        
-            </div>
-            <div class='body'>
-                <h5>{{ $post->body }}</h5>    
-            </div>
-        </div>
+        </a>
         @endforeach
     </body>
 </html>
