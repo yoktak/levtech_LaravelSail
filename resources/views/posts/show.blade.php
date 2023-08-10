@@ -10,21 +10,37 @@
 
     </head>
     <body>
-        <div class='post'>
-            <div class='poster'>
-                <p>{{ $post->user->name }}</p>
+        <a href='/posts/edit/{{ $post->id }}'>
+            <div class='post'>
+                <div class='poster'>
+                    <p>{{ $post->user->name }}</p>
+                </div>
+                <div class='title'>
+                    <h1>「{{ $post->title }}」</h1>
+                </div>
+                <div class='body'>
+                    <h3>{{ $post->body }}</h3>
+                </div>
             </div>
-            <div class='title'>
-                <h1>「{{ $post->title }}」</h1>
-            </div>
-            <div class='body'>
-                <h3>{{ $post->body }}</h3>
-            </div>
-        </div>
+        </a>
         <a href='/posts'>
             <div class='back'>
                 <button>一覧画面</button>
             </div>
         </a>
+        <form action="/posts/delete/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
+            @csrf
+            @method('DELETE')
+            <button type="button" onclick="deletePost({{ $post->id }})">delete</button> 
+        </form>
+        <script>
+            function deletePost(id) {
+                'use strict'
+
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </body>
 </html>

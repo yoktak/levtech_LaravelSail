@@ -31,3 +31,20 @@ a {
     margin-right: 280px;
     box-shadow: 8px 8px 5px 0px rgba(0,0,0,.05);
 }
+
+.create {
+    margin-left: 720px;
+    margin-right: 720px;
+}
+
+.create button {
+    font-size: 30px;
+    color: gray;
+    text-align: center;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: aliceblue;
+}
