@@ -11,6 +11,9 @@
     </head>
     <body class="posts">
         <h1>にて日記</h1>
+        <div class='create'>
+            <a href='/posts/create'><button>+</button></a>
+        </div>
         @foreach($posts as $post)
         <a href="posts/{{ $post->id }}">
             <div class='post'>
