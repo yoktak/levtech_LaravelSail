@@ -1,29 +1,50 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="{{ asset('/css/posts/edit.css') }}">
-        
-        <title>投稿編集</title>
-
-    </head>
     <body>
-        <form action='/posts/update/{{ $post->id }}' method='POST'>
-            @csrf
-            @method('PUT')
-            <div class='title'>
-                <h1>「タイトル」</h1>
-                <input type='text' name='post[title]' value='{{ $post->title }}'>
+        <div class='post'>
+            <form action='/posts/update/{{ $post->id }}' method='POST'>
+                @csrf
+                @method('PUT')
+                <div class='poster'>
+                    <p>{{ $post->user->name }}</p>
+                </div>
+                <div class='title'>
+                    <h1>「<input type='text' name='post[title]' value='{{ $post->title }}'>」</h1>
+                </div>
+                <div class='body'>
+                    <textarea name='post[body]' rows=1 cols=50>{{ $post->body }}</textarea>
+                </div>
+                <div class='submit'>
+                    <button type='submit'>完了</button>
+                </div>
+            </form>
             </div>
-            <div class='body'>
-                <h1>一言</h1>
-                <textarea name='post[body]'>{{ $post->body }}</textarea>
-            </div>
-            <div class='submit'>
-                <button type='submit'>投稿</button>
-            </div>
-        </form>
     </body>
-</html>
+
+<x-app-layout>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class='body'>
+                        <form action='/posts/update/{{ $post->id }}' method='POST'>
+                            @csrf
+                            @method('PUT')
+                            <div class='poster'>
+                                <p>{{ $post->user->name }}</p>
+                            </div>
+                            <div class='title'>
+                                <h1>「<input type='text' name='post[title]' value='{{ $post->title }}'>」</h1>
+                            </div>
+                            <div class='body'>
+                                <textarea name='post[body]' rows=1 cols=50>{{ $post->body }}</textarea>
+                            </div>
+                            <div class='submit'>
+                                <button type='submit'>完了</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

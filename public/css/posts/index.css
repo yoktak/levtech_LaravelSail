@@ -48,3 +48,7 @@ a {
     border: none;
     background-color: aliceblue;
 }
+/* いいねボタン */
+.liked {
+    color:pink
+}
