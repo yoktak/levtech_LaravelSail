@@ -13,9 +13,32 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
+
+        <div>
+            <x-input-label for="image" :value="__('Image')" />
+            <div class="container flex justify-center">
+                <div class="flex absolute w-64 h-64 justify-center">
+                    <div class='flex items-center'>
+                        <label>
+                            <input id="icon" name="icon" type="file" class="icon-toggle mt-1 block w-full hidden"/>
+                            <i class="fas fa-camera fa-4x flex items-center"></i>
+                        </label>
+                    </div>
+                </div>
+                <!-- @if($user->icon_url) -->
+                <div class="flex w-64 h-64 rounded-full overflow-hidden">
+                    <img id='icon_image' src="{{ $user->icon_url }}" class="object-cover"/>
+                </div>
+                <!-- @else
+                <label class="flex w-64 h-64 justify-center bg-gray-200 rounded-full">
+                    <i class="flex items-center"></i>
+                </label>
+                @endif -->
+            </div>
+        </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
