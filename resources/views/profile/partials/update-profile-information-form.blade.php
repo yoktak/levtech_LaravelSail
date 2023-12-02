@@ -28,15 +28,13 @@
                         </label>
                     </div>
                 </div>
-                <!-- @if($user->icon_url) -->
                 <div class="flex w-64 h-64 rounded-full overflow-hidden">
+                    @if($user->icon_url)
                     <img id='icon_image' src="{{ $user->icon_url }}" class="object-cover"/>
-                </div>
-                <!-- @else
-                <label class="flex w-64 h-64 justify-center bg-gray-200 rounded-full">
-                    <i class="flex items-center"></i>
-                </label>
-                @endif -->
+                    @else
+                    <img src="{{ asset('img/unselect.webp') }}" class="object-cover"/>
+                    @endif
+                </div> 
             </div>
         </div>
 

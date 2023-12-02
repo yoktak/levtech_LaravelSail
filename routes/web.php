@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,15 @@ Route::middleware('auth')->group(function () {
 
     // いいね機能
     Route::post('/posts/like', [LikeController::class, 'like']);
+
+    // chat機能
+    Route::get('/chatroom/select', [ChatController::class, 'select'])->name('chatroom_select');
+    Route::get('/chatroom/{chatroom}', [ChatController::class, 'room']);
+    // message非同期
+    Route::post('/newmessage', [MessageController::class, 'newMessage']);
+    Route::get('/allmessage',[MessageController::class, 'allMessage']);
+
+
 });
 
 require __DIR__.'/auth.php';
