@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('create')" :active="request()->routeIs('create')">
                         {{ __('create') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('chatroom_select')" :active="request()->routeIs('chatroom_select')">
+                        {{ __('chat') }}
+                    </x-nav-link>
                 </div>
             </div>
 
