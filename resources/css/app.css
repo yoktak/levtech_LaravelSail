@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .message {
+        background-color: red;
+    }
+}
 
 .liked {
     color: pink;
 }
+

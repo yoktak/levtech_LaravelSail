@@ -60,7 +60,7 @@ $(function() {
       let message = $('#message').val();
       console.log(message);
       console.log(chatroom_id);
- 
+      
       $.ajax({
          headers: { //HTTPヘッダ情報をヘッダ名と値のマップで記述
             'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
