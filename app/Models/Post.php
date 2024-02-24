@@ -28,4 +28,10 @@ class Post extends Model
         $like = Like::where('post_id', $post->id)->where('user_id', Auth::id())->first();
         return $like;
     }
+
+    public function students () {
+        return $this->belongsToMany(Student::class);
+    }
+
+
 }
